@@ -1,0 +1,287 @@
+package chatRoom;
+
+import javax.swing.JFrame;
+
+import javax.swing.*;
+
+ 	import javax.swing.JPanel;
+
+	import javax.swing.border.EtchedBorder;
+
+	import javax.swing.border.TitledBorder;
+
+	import javax.swing.JButton;
+
+	import javax.swing.ImageIcon;
+
+	import java.awt.event.ActionListener;
+
+	import java.text.DecimalFormat;
+
+	import java.text.NumberFormat;
+
+	import java.text.DateFormat;
+
+ 	import java.awt.event.ActionEvent;
+
+	import javax.swing.JTextArea;
+
+	import javax.swing.JLabel;
+
+	import java.util.Date;
+
+	import javax.swing.JTextField;
+
+ 	import java.awt.BorderLayout;
+
+	import java.awt.event.ActionEvent;
+
+	import java.awt.event.ActionListener;
+
+	import java.text.DateFormat;
+
+	import java.util.Date;
+
+	import javax.swing.JFrame;
+
+ 	import javax.swing.JLabel;
+
+	import javax.swing.JPanel;
+
+	import javax.swing.Timer;
+
+
+
+import java.awt.Color;
+
+import java.awt.Font;
+
+
+
+
+
+	public class chat_Client extends JFrame
+
+	{
+
+		private static final long serialVersionUID = 1L;
+
+		JLabel clock = new JLabel("Date: "+DateFormat.getDateTimeInstance().format(new Date()));
+
+
+
+
+
+			public static void main(String[] args)
+
+			{
+
+				chat_Client frame = new chat_Client();
+
+				frame.setVisible(true);
+
+			}
+
+
+
+			public chat_Client() 
+
+			{
+
+				setTitle("--- Chat Room ---");
+
+				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+				setSize(750,500);
+
+				
+
+				// panel title
+
+				JPanel contentPane = new JPanel();
+
+				contentPane.setBorder(new TitledBorder(new EtchedBorder(), 
+
+						              "Chat Room"));;
+
+				setContentPane(contentPane);
+
+				
+
+				// field which displays chat
+
+				JTextArea messageArea = new JTextArea();
+
+				messageArea.setBounds(270, 60, 400, 200);
+
+				messageArea.setEditable(false);
+
+				messageArea.setBackground(Color.LIGHT_GRAY);
+
+				contentPane.add(messageArea);
+
+				
+
+				// field to input message
+
+				JTextArea sendArea = new JTextArea();
+
+				sendArea.setBounds(270, 260, 350, 50);
+
+				sendArea.setEditable(true);
+
+				sendArea.setBackground(Color.cyan);
+
+				contentPane.add(sendArea);
+
+
+
+				// field to display contacts
+
+				JTextArea contactsArea = new JTextArea();
+
+				contactsArea.setBounds(50, 60, 190, 400);
+
+				contactsArea.setEditable(false);
+
+				contactsArea.setBackground(Color.magenta);
+
+				contentPane.add(contactsArea);
+
+				
+
+
+
+				// labels
+
+				JLabel contacts = new JLabel("               CONTACTS");
+
+				contacts.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
+				contacts.setBounds(50, 30, 190, 23);
+
+				contentPane.add(contacts);
+
+				contacts.setOpaque(true);
+
+				contacts.setBackground(contactsArea.getBackground());
+
+				
+
+				// labels
+
+				JLabel clock = new JLabel("Date: "+DateFormat.getDateTimeInstance().format(new Date()));
+
+				clock.setFont(new Font("Tahoma", Font.PLAIN, 14));
+
+				clock.setBounds(480, 30, 190, 23);
+
+				contentPane.add(clock);
+
+				clock.setOpaque(true);
+
+				clock.setBackground(contactsArea.getBackground());
+
+
+
+			    Timer time = new Timer(500, new ActionListener() {
+
+ 			      @Override
+
+			      public void actionPerformed(ActionEvent e) {
+
+				      clock.setText(DateFormat.getDateTimeInstance().format(new Date()));
+
+//			    	  	tick();
+
+			      }
+
+
+
+			    });
+
+
+
+			    time.setRepeats(true);
+
+			    time.setCoalesce(true);
+
+			    time.setInitialDelay(0);
+
+			    time.start();
+
+ 				
+
+				
+
+				// SEND Button
+
+				JButton sendButton = new JButton ("SEND");
+
+				sendButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+
+				sendButton.addActionListener(new ActionListener()
+
+				{
+
+					public void actionPerformed(ActionEvent e)
+
+					{
+
+						System.exit(0);	
+
+					}
+
+				});
+
+				sendButton.setBounds(620, 260, 50, 50);
+
+				contentPane.add(sendButton);
+
+				
+
+				
+
+				// EXIT Button
+
+				JButton exitButton = new JButton("EXIT");
+
+				exitButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+
+				exitButton.addActionListener(new ActionListener()
+
+				{
+
+					public void actionPerformed(ActionEvent e)
+
+					{
+
+						System.exit(0);	
+
+					}
+
+				});
+
+				exitButton.setBounds(690, 420, 50, 50);
+
+				contentPane.add(exitButton);
+
+				
+
+				
+
+				// user will do the layout
+
+				contentPane.setLayout(null);
+
+				
+
+				// position frame in the middle of the screen
+
+				this.setLocationRelativeTo(null);
+
+			}
+
+	}
+
+
